@@ -1,0 +1,5 @@
+namespace: "staging"
+bases:
+- ../base
+patches:
+- replica-count.yml
