@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose-local-db.yml
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: grafana-server
+  name: grafana-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: grafana-server
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose-local-db.yml
+        kompose.version: 1.22.0 (955b78124)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: grafana-server
+    spec:
+      containers:
+        - image: petclinic-grafana-server:dev
+          name: grafana-server
+          ports:
+            - containerPort: 3000
+          resources:
+            limits:
+              memory: "268435456"
+      restartPolicy: Always
+status: {}

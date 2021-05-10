@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose-local-db.yml
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: customers-service
+  name: customers-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: customers-service
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose-local-db.yml
+        kompose.version: 1.22.0 (955b78124)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: customers-service
+    spec:
+      containers:
+        - command:
+            - ./dockerize
+            - -wait=tcp://discovery-server:8761
+            - -timeout=160s
+            - --
+            - java
+            - -Djava.security.egd=file:/dev/./urandom
+            - -jar
+            - /app.jar
+          image: petclinic-customers-service:dev
+          name: customers-service
+          ports:
+            - containerPort: 8081
+          resources:
+            limits:
+              memory: "536870912"
+      restartPolicy: Always
+status: {}
