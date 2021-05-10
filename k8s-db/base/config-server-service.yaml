@@ -9,6 +9,7 @@ metadata:
     io.kompose.service: config-server
   name: config-server
 spec:
+  type: NodePort
   ports:
     - name: "8888"
       port: 8888

@@ -7,8 +7,9 @@ metadata:
   creationTimestamp: null
   labels:
     io.kompose.service: mysql-server
-  name: mysql-server
+  name: mysql-server:8.0.24
 spec:
+  type: NodePort
   ports:
     - name: "3306"
       port: 3306

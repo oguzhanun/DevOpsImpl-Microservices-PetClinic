@@ -9,6 +9,7 @@ metadata:
     io.kompose.service: hystrix-dashboard
   name: hystrix-dashboard
 spec:
+  type: NodePort
   ports:
     - name: "7979"
       port: 7979

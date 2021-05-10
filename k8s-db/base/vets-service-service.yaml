@@ -9,6 +9,7 @@ metadata:
     io.kompose.service: vets-service
   name: vets-service
 spec:
+  type: NodePort
   ports:
     - name: "8083"
       port: 8083
