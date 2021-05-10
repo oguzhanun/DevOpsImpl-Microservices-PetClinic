@@ -33,8 +33,9 @@ spec:
             - -Djava.security.egd=file:/dev/./urandom
             - -jar
             - /app.jar
-          image: petclinic-hystrix-dashboard:dev
+          image: oguzhanun/petclinic-hystrix-dashboard:dev
           name: hystrix-dashboard
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 7979
           resources:

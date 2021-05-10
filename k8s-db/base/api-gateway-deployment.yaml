@@ -33,8 +33,9 @@ spec:
             - -Djava.security.egd=file:/dev/./urandom
             - -jar
             - /app.jar
-          image: petclinic-api-gateway:dev
+          image: oguzhanun/petclinic-api-gateway:dev
           name: api-gateway
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
           resources:

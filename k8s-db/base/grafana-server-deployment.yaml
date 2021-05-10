@@ -24,8 +24,9 @@ spec:
         io.kompose.service: grafana-server
     spec:
       containers:
-        - image: petclinic-grafana-server:dev
+        - image: oguzhanun/petclinic-grafana-server:dev
           name: grafana-server
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 3000
           resources:

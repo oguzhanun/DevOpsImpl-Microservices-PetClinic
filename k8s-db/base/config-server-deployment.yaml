@@ -24,8 +24,9 @@ spec:
         io.kompose.service: config-server
     spec:
       containers:
-        - image: petclinic-config-server:dev
+        - image: oguzhanun/petclinic-config-server:dev
           name: config-server
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8888
           resources:

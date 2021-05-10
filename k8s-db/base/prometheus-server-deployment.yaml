@@ -24,8 +24,9 @@ spec:
         io.kompose.service: prometheus-server
     spec:
       containers:
-        - image: petclinic-prometheus-server:dev
+        - image: oguzhanun/petclinic-prometheus-server:dev
           name: prometheus-server
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 9090
           resources:

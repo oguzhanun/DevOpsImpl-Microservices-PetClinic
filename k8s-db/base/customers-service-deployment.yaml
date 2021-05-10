@@ -33,8 +33,9 @@ spec:
             - -Djava.security.egd=file:/dev/./urandom
             - -jar
             - /app.jar
-          image: petclinic-customers-service:dev
+          image: oguzhanun/petclinic-customers-service:dev
           name: customers-service
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8081
           resources:

@@ -33,8 +33,9 @@ spec:
             - -Djava.security.egd=file:/dev/./urandom
             - -jar
             - /app.jar
-          image: petclinic-discovery-server:dev
+          image: oguzhanun/petclinic-discovery-server:dev
           name: discovery-server
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8761
           resources:
