@@ -33,7 +33,7 @@ spec:
             - -Djava.security.egd=file:/dev/./urandom
             - -jar
             - /app.jar
-          image: oguzhanun/petclinic-api-gateway:dev
+          image: petclinic-api-gateway:dev
           name: api-gateway
           imagePullPolicy: IfNotPresent
           ports:
