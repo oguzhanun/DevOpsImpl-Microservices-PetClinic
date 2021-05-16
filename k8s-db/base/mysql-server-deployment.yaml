@@ -31,8 +31,6 @@ spec:
           name: mysql-server
           ports:
             - containerPort: 3306
-          resources:
-            limits:
-              memory: "268435456"
+          resources: {}
       restartPolicy: Always
 status: {}

@@ -24,7 +24,11 @@ spec:
         io.kompose.service: config-server
     spec:
       containers:
+<<<<<<< Updated upstream
         - image: oguzhanun/petclinic-config-server:dev
+=======
+        - image: "petclinic-config-server:dev"
+>>>>>>> Stashed changes
           name: config-server
           imagePullPolicy: IfNotPresent
           ports:

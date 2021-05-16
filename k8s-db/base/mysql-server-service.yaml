@@ -4,15 +4,13 @@ metadata:
   annotations:
     kompose.cmd: kompose convert -f docker-compose-local-db.yml
     kompose.version: 1.22.0 (955b78124)
-  creationTimestamp: null
   labels:
     io.kompose.service: mysql-server
   name: mysql-server:8.0.24
 spec:
   type: NodePort
   ports:
-    - name: "3306"
-      port: 3306
+    - port: 3306
       targetPort: 3306
   selector:
     io.kompose.service: mysql-server

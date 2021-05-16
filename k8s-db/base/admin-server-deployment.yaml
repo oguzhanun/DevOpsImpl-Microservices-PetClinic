@@ -31,7 +31,7 @@ spec:
             - -Djava.security.egd=file:/dev/./urandom
             - -jar
             - /app.jar
-          image: oguzhanun/petclinic-admin-server:dev
+          image: "petclinic-admin-server:dev"
           name: admin-server
           imagePullPolicy: IfNotPresent
           ports:
