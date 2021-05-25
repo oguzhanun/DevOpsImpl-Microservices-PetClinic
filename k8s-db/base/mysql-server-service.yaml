@@ -6,7 +6,7 @@ metadata:
     kompose.version: 1.22.0 (955b78124)
   labels:
     io.kompose.service: mysql-server
-  name: mysql-server:8.0.24
+  name: mysql-server
 spec:
   type: NodePort
   ports:
