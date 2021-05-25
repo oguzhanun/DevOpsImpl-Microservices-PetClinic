@@ -112,8 +112,6 @@ services:
     environment: 
       MYSQL_ROOT_PASSWORD: petclinic
       MYSQL_DATABASE: petclinic
-      #MYSQL_ROOT_HOST: '%'
-      #MYSQL_USER: root
     mem_limit: 256M
     ports:
     - 3306:3306
