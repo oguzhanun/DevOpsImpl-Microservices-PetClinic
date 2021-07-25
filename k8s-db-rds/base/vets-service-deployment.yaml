@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose-local-db.yml
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: vets-service
+  name: vets-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: vets-service
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose-local-db.yml
+        kompose.version: 1.22.0 (955b78124)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: vets-service
+    spec:
+      containers:
+        - command:
+            - ./dockerize
+            - -wait=tcp://discovery-server:8761
+            - -timeout=160s
+            - --
+            - java
+            - -Djava.security.egd=file:/dev/./urandom
+            - -jar
+            - /app.jar
+          image: oguzhanun/petclinic-vets-service:dev
+          name: vets-service
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8083
+          resources:
+            limits:
+              memory: "536870912"
+      restartPolicy: Always
+status: {}

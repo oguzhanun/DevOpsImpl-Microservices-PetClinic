@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose-local-db.yml
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: discovery-server
+  name: discovery-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: discovery-server
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose-local-db.yml
+        kompose.version: 1.22.0 (955b78124)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: discovery-server
+    spec:
+      containers:
+        - command:
+            - ./dockerize
+            - -wait=tcp://config-server:8888
+            - -timeout=160s
+            - --
+            - java
+            - -Djava.security.egd=file:/dev/./urandom
+            - -jar
+            - /app.jar
+          image: oguzhanun/petclinic-discovery-server:dev
+          name: discovery-server
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8761
+          resources:
+            limits:
+              memory: "536870912"
+      restartPolicy: Always
+status: {}
